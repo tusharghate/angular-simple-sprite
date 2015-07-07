@@ -5,7 +5,10 @@
     "Tushar Ghate <tushghate@gmail.com>"
   ],
   "description": "An Angular directive for creating simple sprites.",
-  "main": "\"dist/angular-simple-sprite.js\", \"dist/angular-simple-sprite.min.js\"",
+  "main": [
+    "dist/angular-simple-sprite.js",
+    "dist/angular-simple-sprite.min.js"
+  ],
   "keywords": [
     "angular",
     "sprite",
