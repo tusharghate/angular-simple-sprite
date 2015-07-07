@@ -1,0 +1,24 @@
+{
+  "name": "angular-simple-sprite",
+  "version": "0.0.0",
+  "description": "An Angular directive for creating simple sprites.",
+  "main": "GruntFile.js",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {
+    "grunt": "^0.4.5"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "load-grunt-tasks": "^3.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tushar Ghate <tushghate@gmail.com>",
+  "license": "ISC"
+}
