@@ -18,7 +18,7 @@
   "homepage": "https://github.com/tusharghate/angular-simple-sprite",
   "ignore": [
     "**/.*",
-    ".gitignore"
+    ".gitignore",
     "jshint-config.jshintrc",
     "package.json",
     "bower.json",
