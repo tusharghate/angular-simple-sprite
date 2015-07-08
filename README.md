@@ -1,7 +1,7 @@
 # angular-simple-sprite
 An easy-to-use AngularJS directive for creating simple sprite animations. 
 
-## Useage
+## Quick Start
 
 + Install angular-simple-sprite with [Bower](http://www.bower.io)
 
