@@ -30,7 +30,7 @@ angular.module('myApp', ['simple-sprite']);
     frame-width="100" 
     frame-height="100" 
     frames="10" 
-    axis="x" 
+    frames-per-row="5" 
     repeat="true" 
     speed="50">
 </simple-sprite>
@@ -44,7 +44,7 @@ Be sure to check the example folder if you'd like to see `simple-sprite` in acti
 + `frame-width` - The width of a single frame in your sprite.
 + `frame-height` - The height of a single frame in your sprite.
 + `frames` - The total number of frames in your sprite.
-+ `axis` - The axis on which to animate (accepts either `x` or `y`).
++ `frames-per-row` - _Optional_ The number of frames on each row in your sprite, for example if your frames are arranged `4x2`, your `frames-per-row` is `4`. A fully vertical sprite would have a `frames-per-row` of `1`, and a fully horizonal sprite would have a `frames-per-row` of `0`. Defaults to `0`.
 + `repeat` - _Optional_ Determines whether or not the sprite animation should repeat. Defaults to `true`.
 + `speed` - _Optional_ The speed between each frame in milliseconds. Defaults to `100ms`.
 
