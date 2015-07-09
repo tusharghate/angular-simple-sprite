@@ -6,9 +6,10 @@ module.exports = function(grunt) {
   grunt.registerTask('buildApp', 
     [
       'clean',
+      'jsbeautifier',
       'jshint:pre',
-      'uglify',
-      'jshint:post'
+      'uglify'
+      // 'jshint:post'
     ]
   );
 

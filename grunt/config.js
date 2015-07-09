@@ -7,6 +7,13 @@ module.exports = {
         }
 	},
 
+    jsbeautifier: {
+        files : ['dist/**/*.js'],
+        options : {
+
+        }
+    },
+
     // Validate JS files with JSHint.
     jshint: {
         options: {
