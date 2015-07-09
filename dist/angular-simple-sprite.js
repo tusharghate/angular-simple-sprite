@@ -14,7 +14,7 @@
 				frameWidth: "=",
 				frameHeight: "=",
 				frames: "=",
-				axis: "@",
+                framesPerRow: "@",
 				repeat: "@",
 				speed: "@"
 			},
@@ -25,18 +25,21 @@
 					frameWidth,
 					frameHeight,
 					frames,
-					axis = 'x',
+                    framesPerRow = 0,
 					repeat = true,
 					speed = 100;
+                
+                var currentPosX = 0,
+                    currentPosY = 0;
 
 				function init() {
 					src = $scope.src;
 					frameWidth = parseInt($scope.frameWidth, 10);
 					frameHeight = parseInt($scope.frameHeight, 10);
 					frames = parseInt($scope.frames, 10);
-					axis = $scope.axis;
 					repeat = $scope.repeat == 'true';
-					speed = $scope.speed;
+					speed = $scope.speed
+                    framesPerRow = $scope.framesPerRow;
 
 					element.css({
 						"display": "block",
@@ -52,26 +55,40 @@
 				var animationInterval = null;
 				function animate() {
 					 animationInterval = $interval(function() {
-					 	
-					 	var currentPos = element.css("background-position").split([" "]),
-					 		currentPosX = parseInt(currentPos[0].replace("px", ""), 10),
-					 		currentPosY = parseInt(currentPos[1].replace("px", ""), 10);
+                         // Check if the animation has completed
+                         var animationComplete = false;
+                         if (framesPerRow) {
+                             if ((currentPosY / frameHeight * framesPerRow) + (currentPosX / frameWidth) >= frames) {
+                                animationComplete = true;
+                             }
+                         } else {
+                             if (currentPosX / frameWidth >= frames) {
+                                animationComplete = true;   
+                             }
+                         }
+                         
+                        // Update the sprite frame
+                        element.css("background-position", currentPosX  + "px" + " " + currentPosY + "px");
+					 
+                        // Determine if we should loop the animation, or stop, if the animation is complete
+                        if (animationComplete) {
+                            if (repeat) {
+                                currentPosX = 0;
+                                currentPosY = 0;
+                            } else {
+                                $interval.cancel(animationInterval);
+                            }
+                         } else {
+                            // Increment the X position
+                            currentPosX += frameWidth;
 
-					 	if (axis == 'x') {
-					 		if (currentPosX < frameWidth * frames || repeat) {
-					 			element.css("background-position", currentPosX + frameWidth + "px" + " " + currentPosY);
-					 		} else {
-				 				$interval.cancel(animationInterval);
-					 		}
-					 	} else if (axis == 'y') {
-					 		if (currentPosY < frameHeight * frames || repeat) {
-					 			element.css("background-position", currentPosX + " " + currentPosY + frameHeight + "px");
-					 		} else {
-				 				$interval.cancel(animationInterval);
-					 		}
-					 	}
-
-					 }, speed);
+                            // Check if we should move to the next row
+                            if (framesPerRow != null && currentPosX + frameWidth > frameWidth * framesPerRow) {
+                                currentPosX = 0;
+                                currentPosY += frameHeight;
+                            }
+                         }
+                     }, speed);
 				}
 
 				$scope.$on("$destroy", function() {

@@ -5,25 +5,38 @@
   </head>
   <body ng-controller="AppController as appController">
   	<div>
+        <h3>Basic Example</h3>
 	    <simple-sprite 
 	    	src="./images/alien-jump.png" 
 	    	frame-width="100" 
 	    	frame-height="155" 
 	    	frames="8" 
-	    	axis="x" 
+	    	repeat="true" 
+	    	speed="50">
+	    </simple-sprite>
+	</div>
+      
+    <div>
+        <h3>Using frames-per-row</h3>
+	    <simple-sprite 
+	    	src="./images/alien-jump-rows.png" 
+	    	frame-width="100" 
+	    	frame-height="155" 
+	    	frames="8" 
+            frames-per-row="4"
 	    	repeat="true" 
 	    	speed="50">
 	    </simple-sprite>
 	</div>
 
 	<div>
+        <h3>Non-Repeating</h3>
 	    <simple-sprite 
 	    	src="./images/alien-rocket.png" 
 	    	frame-width="150" 
 	    	frame-height="348" 
 	    	frames="3" 
-	    	axis="x" 
-	    	repeat="true" 
+	    	repeat="false" 
 	    	speed="100">
 	    </simple-sprite>
 	</div>
