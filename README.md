@@ -36,7 +36,7 @@ angular.module('myApp', ['simple-sprite']);
 </simple-sprite>
 ```
 
-Be sure to check the example folder if you'd like to see `simple-sprite` in action.
+Be sure to check the demo folder if you'd like to see `simple-sprite` in action.
 
 ## Options
 
