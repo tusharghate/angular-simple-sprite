@@ -3,9 +3,6 @@
   "version": "0.0.0",
   "description": "An Angular directive for creating simple sprites.",
   "main": "GruntFile.js",
-  "directories": {
-    "example": "example"
-  },
   "dependencies": {
     "grunt": "^0.4.5"
   },
@@ -21,5 +18,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tushar Ghate <tushghate@gmail.com>",
-  "license": "ISC"
+  "license": "MIT"
 }

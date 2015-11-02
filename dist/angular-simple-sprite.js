@@ -3,17 +3,17 @@
         .module('simple-sprite', [])
         .directive('simpleSprite', simpleSprite);
 
-    simpleSprite.$inject = ['$interval'];
+    simpleSprite.$inject = ['$window'];
 
-    function simpleSprite($interval) {
+    function simpleSprite($window) {
         return {
             restrict: 'AE',
             replace: false,
             scope: {
                 src: "@",
-                frameWidth: "=",
-                frameHeight: "=",
-                frames: "=",
+                frameWidth: "@",
+                frameHeight: "@",
+                frames: "@",
                 framesPerRow: "@",
                 repeat: "@",
                 speed: "@"
@@ -89,7 +89,7 @@
                         return toReturn;
                     }
 
-                    animationInterval = $interval(function() {
+                    animationInterval = $window.setInterval(function() {
                         // Update the sprite frame
                         element.css("background-position", spritePosition.x + "px" + " " + spritePosition.y + "px");
 
@@ -99,7 +99,8 @@
                                 spritePosition.x = 0;
                                 spritePosition.y = 0;
                             } else {
-                                $interval.cancel(animationInterval);
+                                $window.clearInterval(animationInterval);
+                                // $interval.cancel(animationInterval);
                             }
                         } else {
                             // Increment the X position
@@ -115,7 +116,8 @@
                 }
 
                 $scope.$on("$destroy", function() {
-                    $interval.cancel(animationInterval);
+                    $window.clearInterval(animationInterval);
+                    // $interval.cancel(animationInterval);
                 });
 
                 init();
