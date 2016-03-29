@@ -13,7 +13,7 @@ $ bower install angular-simple-sprite --save
 
 ```html
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-simple-sprite/angular-simple-sprite.min.js"></script>
+<script src="bower_components/angular-simple-sprite/angular-simple-sprite.js"></script>
 ```
 
 + Inject the `simple-sprite` module into your app:
