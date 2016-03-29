@@ -1,13 +1,12 @@
 {
   "name": "angular-simple-sprite",
-  "version": "0.0.6",
+  "version": "1.0",
   "authors": [
     "Tushar Ghate <tushghate@gmail.com>"
   ],
   "description": "An Angular directive for creating simple sprites.",
   "main": [
-    "dist/angular-simple-sprite.js",
-    "dist/angular-simple-sprite.min.js"
+    "dist/angular-simple-sprite.js"
   ],
   "keywords": [
     "angular",
