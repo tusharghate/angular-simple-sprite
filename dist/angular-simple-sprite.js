@@ -36,8 +36,8 @@
                 };
 
                 /**
-                 * Initializes the sprite with default CSS styles and options passed in by 
-                 * the user. Starts the sprite animation. 
+                 * Initializes the sprite with default CSS styles and options passed in by
+                 * the user. Starts the sprite animation.
                  */
                 function init() {
                     src = $scope.src;
@@ -67,7 +67,7 @@
                 function animate() {
 
                     /**
-                     * Returns whether the sprite animation has completed or not. 
+                     * Returns whether the sprite animation has completed or not.
                      */
                     function isAnimationComplete() {
                         var toReturn = false;
@@ -91,7 +91,7 @@
 
                     animationInterval = $window.setInterval(function() {
                         // Update the sprite frame
-                        element.css("background-position", spritePosition.x + "px" + " " + spritePosition.y + "px");
+                        element.css("background-position", -spritePosition.x + "px" + " " + spritePosition.y + "px");
 
                         // Determine if we should loop the animation, or stop, if the animation is complete
                         if (isAnimationComplete()) {
