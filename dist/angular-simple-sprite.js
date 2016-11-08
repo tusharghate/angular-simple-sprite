@@ -75,7 +75,7 @@
                         if (framesPerRow) {
                             var numRows = frames / framesPerRow
 
-                            if (spritePosition.x >= framesPerRow * frameWidth &&
+                            if (spritePosition.x >= (framesPerRow - 1) * frameWidth &&
                                 spritePosition.y >= numRows * frameHeight) {
                                 toReturn = true;
                             }
