@@ -1,58 +1,79 @@
 <!DOCTYPE html>
 <html ng-app="my-app">
-  <head>
-    <title>Angular Simple Sprite</title>
-  </head>
-  <body ng-controller="AppController as appController">
-  	<div>
-        <h3>Basic Example</h3>
-	    <simple-sprite
-	    	src="./images/alien-jump.png"
-	    	frame-width="100"
-	    	frame-height="155"
-	    	frames="8"
-	    	repeat="true"
-	    	speed="50">
-	    </simple-sprite>
-	</div>
+	<head>
+		<title>Angular Simple Sprite</title>
+		<style>
+			html, body {
+			    font-family: "Helvetica Neue", sans-serif;
+			}
+			body {
+			    padding: 1.5em;
+			}
+            .container {
+                overflow: hidden;
+                margin: 0 auto;
+                width: 1024px;
+                text-align: center;
+            }
+			.example {
+			    float: left;
+                width: 33.3%;
+                text-align: center;
+			}
+            simple-sprite {
+                margin: 0 auto;
+            }
+		</style>
+	</head>
+	<body ng-controller="AppController as appController">
+		<div class="container">
+			<div class="example">
+				<h3>Basic Example</h3>
+				<simple-sprite
+					src="./images/alien-jump.png"
+					frame-width="100"
+					frame-height="155"
+					frames="8"
+					repeat="true"
+					speed="50">
+				</simple-sprite>
+			</div>
+			<div class="example">
+				<h3>Using frames-per-row</h3>
+				<simple-sprite
+					src="./images/alien-jump-rows.png"
+					frame-width="100"
+					frame-height="155"
+					frames="8"
+					frames-per-row="4"
+					repeat="true"
+					speed="50">
+				</simple-sprite>
+			</div>
+			<div class="example">
+				<h3>Non-Repeating</h3>
+				<simple-sprite
+					src="./images/alien-rocket.png"
+					frame-width="150"
+					frame-height="348"
+					frames="3"
+					repeat="false"
+					speed="100">
+				</simple-sprite>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="../dist/angular-simple-sprite.js"></script>
+	<script type="text/javascript">
+		(function() {
+			angular
+				.module('my-app', ['simple-sprite'])
+				.controller('AppController', AppController)
 
-    <div>
-        <h3>Using frames-per-row</h3>
-	    <simple-sprite
-	    	src="./images/alien-jump-rows.png"
-	    	frame-width="100"
-	    	frame-height="155"
-	    	frames="8"
-            frames-per-row="4"
-	    	repeat="true"
-	    	speed="50">
-	    </simple-sprite>
-	</div>
-
-	<div>
-        <h3>Non-Repeating</h3>
-	    <simple-sprite
-	    	src="./images/alien-rocket.png"
-	    	frame-width="150"
-	    	frame-height="348"
-	    	frames="3"
-	    	repeat="false"
-	    	speed="100">
-	    </simple-sprite>
-	</div>
-  </body>
-
-  <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
-  <script type="text/javascript" src="../dist/angular-simple-sprite.js"></script>
-  <script type="text/javascript">
-	  (function() {
-	  	angular
-	  		.module('my-app', ['simple-sprite'])
-	  		.controller('AppController', AppController)
-
-	  	function AppController() {
-	  		var vm = this;
-	  	}
-	  })(angular);
-  </script>
+			function AppController() {
+				var vm = this;
+			}
+		})(angular);
+	</script>
 </html>

@@ -1,8 +1,8 @@
 {
   "name": "angular-simple-sprite",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "An Angular directive for creating simple sprites.",
-  "main": "GruntFile.js",
+  "main": "dist/angular-simple-sprite.js",
   "dependencies": {
     "grunt": "^0.4.5"
   },
