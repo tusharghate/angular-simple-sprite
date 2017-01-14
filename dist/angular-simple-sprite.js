@@ -91,7 +91,7 @@
 
                     animationInterval = $window.setInterval(function() {
                         // Update the sprite frame
-                        element.css("background-position", -spritePosition.x + "px" + " " + spritePosition.y + "px");
+                        element.css("background-position", -spritePosition.x + "px" + " " + -spritePosition.y + "px");
 
                         // Determine if we should loop the animation, or stop, if the animation is complete
                         if (isAnimationComplete()) {
