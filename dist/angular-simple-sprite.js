@@ -35,6 +35,8 @@
                     'y': 0
                 };
 
+                var scale;
+
                 /**
                  * Initializes the sprite with default CSS styles and options passed in by
                  * the user. Starts the sprite animation.
@@ -48,11 +50,13 @@
                     speed = $scope.speed
                     framesPerRow = $scope.framesPerRow;
 
+                    var width = element.width();
+                    scale = width / frameWidth;
+
                     element.css({
                         "display": "block",
-                        "width": frameWidth + "px",
-                        "height": frameHeight + "px",
                         "background": "url(" + src + ") repeat",
+                        "background-size": framesPerRow * 100 + '%',
                         "backgroundPosition": "0px 0px"
                     });
 
@@ -88,7 +92,7 @@
 
                     animationInterval = $window.setInterval(function() {
                         // Update the sprite frame
-                        element.css("background-position", -spritePosition.x + "px" + " " + -spritePosition.y + "px");
+                        element.css("background-position", -spritePosition.x * scale + "px" + " " + -spritePosition.y * scale + "px");
 
                         // Determine if we should loop the animation, or stop, if the animation is complete
                         if (isAnimationComplete()) {
