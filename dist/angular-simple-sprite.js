@@ -119,6 +119,10 @@
                 }, speed);
             }
 
+            function pause() {
+                $window.clearInterval(animationInterval);
+            }
+
             $scope.$on("$destroy", function() {
                 $window.clearInterval(animationInterval);
                 // $interval.cancel(animationInterval);
@@ -127,7 +131,8 @@
             init();
 
             return {
-            	play: animate
+            	play: animate,
+            	pause: pause
             };
         }
     }
