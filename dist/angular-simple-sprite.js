@@ -1,11 +1,12 @@
 (function() {
     angular
         .module('simple-sprite', [])
-        .directive('simpleSprite', simpleSprite);
+        .directive('simpleSprite', simpleSprite)
+        .service('simpleSpriteDelegate', simpleSpriteDelegate);
 
-    simpleSprite.$inject = ['$window'];
+    simpleSprite.$inject = ['$window', 'simpleSpriteDelegate'];
 
-    function simpleSprite($window) {
+    function simpleSprite($window, simpleSpriteDelegate) {
         return {
             restrict: 'AE',
             replace: false,
@@ -21,6 +22,8 @@
 
             link: function($scope, element, attributes) {
             	var sprite = new Sprite($scope, element);
+            	if (attributes.delegateHandle)
+            		simpleSpriteDelegate.instance[attributes.delegateHandle] = sprite;
             	sprite.play();
             }
         };
@@ -135,5 +138,11 @@
             	pause: pause
             };
         }
+    }
+
+    function simpleSpriteDelegate() {
+    	return {
+    		instance: {}
+    	};
     }
 })(angular);
