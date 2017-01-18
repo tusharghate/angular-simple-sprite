@@ -17,7 +17,8 @@
                 frames: "@",
                 framesPerRow: "@",
                 repeat: "@",
-                speed: "@"
+                speed: "@",
+                onstep: "&"
             },
 
             link: function($scope, element, attributes) {
@@ -37,6 +38,7 @@
                 repeat = true,
                 speed = 100;
 
+            var index = 0;
             // Keeps track of the current x and y positions of the sprite.
             var spritePosition = {
                 'x': 0,
@@ -76,47 +78,31 @@
                 */
             function animate() {
 
-                /**
-                    * Returns whether the sprite animation has completed or not.
-                    */
-                function isAnimationComplete() {
-                    var toReturn = false;
-
-                    if (framesPerRow) {
-                        if (spritePosition.y / frameHeight * framesPerRow + spritePosition.x / frameWidth >= frames) {
-                            toReturn = true;
-                        }
-
-                    } else {
-                        if (spritePosition.x >= frameWidth * frames) {
-                            toReturn = true;
-                        }
-                    }
-
-                    return toReturn;
-                }
-
                 animationInterval = $window.setInterval(function() {
                     // Update the sprite frame
                     element.css("background-position", -spritePosition.x * scale + "px" + " " + -spritePosition.y * scale + "px");
 
+                    $scope.onstep({index:index});
+
                     // Determine if we should loop the animation, or stop, if the animation is complete
-                    if (isAnimationComplete()) {
+                    index++;
+                    // Increment the X position
+                    spritePosition.x += frameWidth;
+
+                    // Check if we should move to the next row
+                    if (framesPerRow != null && spritePosition.x + frameWidth > frameWidth * framesPerRow) {
+                        spritePosition.x = 0;
+                        spritePosition.y += frameHeight;
+                    }
+
+                    if (index >= frames) {
+                        index = 0;
                         if (repeat) {
                             spritePosition.x = 0;
                             spritePosition.y = 0;
                         } else {
                             $window.clearInterval(animationInterval);
                             // $interval.cancel(animationInterval);
-                        }
-                    } else {
-                        // Increment the X position
-                        spritePosition.x += frameWidth;
-
-                        // Check if we should move to the next row
-                        if (framesPerRow != null && spritePosition.x + frameWidth > frameWidth * framesPerRow) {
-                            spritePosition.x = 0;
-                            spritePosition.y += frameHeight;
                         }
                     }
                 }, speed);
