@@ -64,7 +64,6 @@
                 scale = width / frameWidth;
 
                 element.css({
-                    "display": "block",
                     "background": "url(" + src + ") repeat",
                     "background-size": framesPerRow * 100 + '%',
                     "backgroundPosition": "0px 0px"
